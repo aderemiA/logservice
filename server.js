@@ -12,7 +12,7 @@ app.set("port", port);
 db;
 
 app.listen(SERVER_CONFIG.port, () => {
-  job.start();
+  job();
   console.log("LIstening");
   logger.info(`Server listening on ${SERVER_CONFIG.hostname}`);
 });

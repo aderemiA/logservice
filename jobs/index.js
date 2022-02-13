@@ -1,7 +1,7 @@
 const cron = require("node-cron");
 const { receiveMessage } = require("../custigrow-core-bus/index");
 
-module.exports.index = () => {
+module.exports= () => {
   cron.schedule("*/10 * * * *", () => {
     const received = await receiveMessage(process.env.AWS_SQS_CU_AUTHSERVICE);
     if (!received) return;
