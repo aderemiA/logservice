@@ -73,6 +73,15 @@ class AppSuccess {
       data: this.data,
     });
   }
+    USERREACTIVATIONSUCCESSFUL() {
+    return this.res.status(200).json({
+      status: true,
+      message: `User has been reactivated successfully`,
+      error: null,
+      data: this.data,
+    });
+  }
+
 
   FETCHEDSUCCESSFULLY() {
     return this.res.status(200).json({

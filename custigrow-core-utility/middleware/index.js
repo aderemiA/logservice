@@ -22,6 +22,7 @@ exports.verifyToken = async (req, res, next) => {
         id: decoded.id,
         email: decoded.email,
         role: decoded.role,
+        companyId: decoded.companyId
       };
 
       next();
@@ -38,8 +39,8 @@ exports.verifyToken = async (req, res, next) => {
 exports.validatePermission = (action) => async (req, res, next) => {
   const { companyId } = req.params;
   try {
-    if (req.user.role === "Super Admin") next();
     if (!req.user.role) throw new AppError().FORBIDDEN();
+    if (req.user.role === "Super Admin") next();
 
     var permissions;
     permissions = await client.getAsync("perms");
@@ -60,7 +61,7 @@ exports.validatePermission = (action) => async (req, res, next) => {
 
     if (!roles) {
       const { data: profile } = await axios.get(
-        `${SERVER_CONFIG.orgService}/api/orgservice/middleware/get/company/${companyId}`
+        `${SERVER_CONFIG.orgService}/api/orgservice/middleware/get/roles/${companyId}`
       );
 
       roles = profile.data;
@@ -77,7 +78,6 @@ exports.validatePermission = (action) => async (req, res, next) => {
     if (role.permissionId.includes(_id)) next();
     else throw new AppError().FORBIDDEN();
   } catch (error) {
-    console.log(error);
     next(error);
   }
 };

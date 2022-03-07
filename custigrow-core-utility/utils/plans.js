@@ -1,0 +1,47 @@
+const plans = [
+  {
+    name: 'trial',
+    noOfUsers: 3,
+    noOfDays: 14,
+    noOfProducts: 50,
+    noOfCategories: 5,
+    backgroundAutomation: 1,
+    storage: '3GB',
+    amount: 0,
+  },
+  {
+    name: 'basic',
+    noOfUsers: 3,
+    noOfDays: 30,
+    noOfProducts: 50,
+    noOfCategories: 5,
+    backgroundAutomation: 1,
+    storage: '3GB',
+    apiIntegration: false,
+    amount: 3000,
+  },
+  {
+    name: 'standard',
+    noOfUsers: 10,
+    noOfDays: 30,
+    noOfProducts: 100,
+    noOfCategories: 10,
+    backgroundAutomation: 5,
+    storage: '5GB',
+    apiIntegration: false,
+    amount: 5000,
+  },
+  {
+    name: 'premium',
+    noOfUsers: 200,
+    noOfDays: 30,
+    noOfProducts: 500,
+    noOfCategories: 50,
+    backgroundAutomation: 10,
+    storage: '10GB',
+    apiIntegration: true,
+    amount: 7000,
+  },
+];
+
+module.exports = plans;

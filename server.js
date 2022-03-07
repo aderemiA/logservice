@@ -4,7 +4,7 @@ const debug = require("debug")("custigrow-company-profile:server");
 const { db } = require("./custigrow-core-utility/dataConnect/mongoDb");
 const logger = require("./custigrow-core-utility/logger/logEngine");
 const { SERVER_CONFIG } = require("./custigrow-core-utility/serverInit");
-const job = require("./jobs/index");
+const redisEvents = require("./node-redis");
 
 const port = normalizePort(SERVER_CONFIG.port);
 app.set("port", port);
@@ -12,7 +12,7 @@ app.set("port", port);
 db;
 
 app.listen(SERVER_CONFIG.port, () => {
-  job();
+  redisEvents();
   console.log("LIstening");
   logger.info(`Server listening on ${SERVER_CONFIG.hostname}`);
 });

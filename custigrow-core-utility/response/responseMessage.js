@@ -138,6 +138,55 @@ class AppError extends Error {
       statusCode: 403,
     };
   }
+  INVALID_INVITE() {
+    return {
+      message: "Invalid invite code",
+      statusCode: 400,
+    };
+  }
+  INVITE_EXPIRED() {
+    return {
+      message: "Invite code has expired",
+      statusCode: 400,
+    };
+  }
+  NOROLEFOUND() {
+    return {
+      message: "You haven't been assigned a role, please contact your admin",
+      statusCode: 400,
+    };
+  }
+
+  MAX_USERS_REACHED(noOfUsers, plan) {
+    return {
+      message: `you can only invite ${noOfUsers} amount of users on ${plan} plan, to add more users upgrade to other plans`,
+      statusCode: 400,
+    };
+  }
+  MAX_CATEGORY_REACHED(noOfCategories, plan) {
+    return {
+      message: `you can only create ${noOfCategories} amount of categories on ${plan} plan, to add more categories upgrade to other plans`,
+      statusCode: 400,
+    };
+  }
+  MAX_PRODUCT_REACHED(noOfProducts, plan) {
+    return {
+      message: `you can only create ${noOfProducts} amount of products on ${plan} plan, to add more products upgrade to other plans`,
+      statusCode: 400,
+    };
+  }
+  CANNOT_DELETE(type) {
+    return {
+      message: `You can not delete this ${type} at this time, pls try again later`,
+      statusCode: 400,
+    };
+  }
+  CANNOT_DELETE_DEFAULT_ROLE() {
+    return {
+      message: `You cannot delete this role as it is a default role`,
+      statusCode: 400,
+    };
+  }
 }
 
 module.exports = AppError;

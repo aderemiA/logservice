@@ -14,9 +14,8 @@ exports.validateSchema = (schema) => (req, res, next) => {
 
       res.status(400).json({
         status: false,
-        message: { [str]: error.message.replace(/['"]/g, "") },
+        message: e.message,
         data: null,
-        error: e,
       });
     });
   }

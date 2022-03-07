@@ -1,12 +1,13 @@
 const Notification = require("../models/notification");
 
-exports.getAllNotifications = (companyId) => {
-  return Notification.find({ companyId: companyId })
-    .sort({ createdAt: -1 })
-    .then((notifications) => {
-      return notifications;
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+exports.getAllNotifications = async ({ id, companyId }) => {
+  const notifications = await Notification.find({
+    $or: [
+      {
+        userId: id,
+      },
+      { companyId },
+    ],
+  }).sort({ createdAt: -1 });
+  return notifications;
 };

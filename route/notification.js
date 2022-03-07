@@ -1,14 +1,11 @@
-const express = require('express');
-
+const express = require("express");
 
 const router = express.Router();
 
-const { getNotifications } = require('../controller/notification')
+const { getNotifications } = require("../controller/notification");
 
-const { verifyToken } = require('../custigrow-core-utility/middleware')
+const { verifyToken } = require("../custigrow-core-utility/middleware");
 
-
-
-router.post("/get", verifyToken, getNotifications);
+router.get("/get", verifyToken, getNotifications);
 
 module.exports = router;

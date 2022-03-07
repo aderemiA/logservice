@@ -7,12 +7,13 @@ const {
 } = require("./security/token");
 const { hashpassword, verifyPassword } = require("./security/hash");
 const { decryptToken, encryptToken } = require("./security/encryptionEngine");
-const SERVER_CONFIG = require("./env");
+const SERVER_CONFIG = require("./utils/env");
 const AppError = require("./response/responseMessage");
 const AppSuccess = require("./response/responseProcessor");
 const s3 = require("./s3Connect/s3");
-const { generateSixDigits } = require("./generateSixDigits");
-
+const { generateSixDigits } = require("./utils/generateSixDigits");
+const { createLoginToken } = require("./utils/createLoginToken")
+const { persistDataToRedis } = require("./utils/redisData")
 module.exports = {
   generateAccessToken,
   generateRefreshToken,
@@ -28,4 +29,6 @@ module.exports = {
   AppSuccess,
   s3,
   generateSixDigits,
+  createLoginToken,
+  persistDataToRedis
 };

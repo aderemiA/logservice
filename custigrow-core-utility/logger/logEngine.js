@@ -6,11 +6,10 @@ const httpTransportOptions = {
   path:
     "/v1/input/" +
     env.DD_API_KEY +
-    "?ddsource=nodejs" + 
+    "?ddsource=nodejs" +
     "&service=" + env.APP_NAME +
-    "&ddenv=" + env.ENV + 
-    "&ddhost=" + env.HOST,
-  ssl: true,
+    "&ddenv=" + env.ENV,
+    ssl: true,
 };
 
 const logger = createLogger({

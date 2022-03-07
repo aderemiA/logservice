@@ -8,6 +8,10 @@ const notificationSchema = new Schema(
       type: String,
       required: true,
     },
+    category: {
+      type: String,
+      required: true,
+    },
     title: {
       type: String,
       required: true,
@@ -16,16 +20,15 @@ const notificationSchema = new Schema(
       type: String,
       required: true,
     },
-    isNew: {
-      type: Boolean,
-      default: true,
-    },
     isRead: {
       type: Boolean,
       default: false,
     },
+    recipients: {
+      type: [String],
+    },
   },
-  { timeStamps: true }
+  { timestamps: true }
 );
 
 const Notification = mongoose.model("notification", notificationSchema);
