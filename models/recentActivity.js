@@ -12,3 +12,7 @@ const recentActivitySchema = new Schema({
     required: true,
   },
 });
+
+const RecentActivity = mongoose.model("recentActivity", recentActivitySchema);
+
+module.exports = RecentActivity;
